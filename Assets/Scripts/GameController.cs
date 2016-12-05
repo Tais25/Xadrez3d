@@ -7,6 +7,8 @@ class GameController : MonoBehaviour {
 
     public GameObject reiBranco1 = null;
     public GameObject reiPreto = null;
+    public GameObject torreBranca = null;
+    public GameObject torrePreta = null;
 
     public Text txtMsg = null;
     public Text txtXeque = null;
@@ -30,7 +32,11 @@ class GameController : MonoBehaviour {
         informarAguardando();
 
         Util.instanciarRei('e', 1, Cor.Branca, partida, reiBranco1);
+        Util.instanciarTorre('a', 1, Cor.Branca, partida, torreBranca);
+        Util.instanciarTorre('h', 1, Cor.Branca, partida, torreBranca);
         Util.instanciarRei('e', 8, Cor.Preta, partida, reiPreto);
+        Util.instanciarTorre('a', 8, Cor.Preta, partida, torrePreta);
+        Util.instanciarTorre('h', 8, Cor.Preta, partida, torrePreta);
     }
 
     public void processarMouseDown(GameObject peca, GameObject casa) {
