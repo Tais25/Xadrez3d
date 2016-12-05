@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 class GameController : MonoBehaviour {
 
-    public GameObject reiBranco1 = null;
+    public GameObject reiBranco = null;
     public GameObject reiPreto = null;
     public GameObject torreBranca = null;
     public GameObject torrePreta = null;
@@ -36,8 +36,8 @@ class GameController : MonoBehaviour {
         pecaEscolhida = null;
         corOriginal = txtMsg.color;
 
-        posDescarteBrancas = new Vector3(-1.2f, 0f, -1f);
-        posDescartePretas = new Vector3(1.2f, 0f, 1f);
+        posDescarteBrancas = new Vector3(-130f, 0f, -130f);
+        posDescartePretas = new Vector3(130f, 0f, 130f);
 
         partida = new PartidaDeXadrez();
 
@@ -49,7 +49,7 @@ class GameController : MonoBehaviour {
         Util.instanciarCavalo('b', 1, Cor.Branca, partida, cavaloBranco);
         Util.instanciarBispo('c', 1, Cor.Branca, partida, bispoBranco);
         Util.instanciarDama('d', 1, Cor.Branca, partida, damaBranca);
-        Util.instanciarRei('e', 1, Cor.Branca, partida, reiBranco1);
+        Util.instanciarRei('e', 1, Cor.Branca, partida, reiBranco);
         Util.instanciarBispo('f', 1, Cor.Branca, partida, bispoBranco);
         Util.instanciarCavalo('g', 1, Cor.Branca, partida, cavaloBranco);
         Util.instanciarTorre('h', 1, Cor.Branca, partida, torreBranca);
@@ -65,7 +65,7 @@ class GameController : MonoBehaviour {
         Util.instanciarTorre('a', 8, Cor.Preta, partida, torrePreta);
         Util.instanciarCavalo('b', 8, Cor.Preta, partida, cavaloPreto);
         Util.instanciarBispo('c', 8, Cor.Preta, partida, bispoPreto);
-        Util.instanciarDama('h', 8, Cor.Preta, partida, damaPreta);
+        Util.instanciarDama('d', 8, Cor.Preta, partida, damaPreta);
         Util.instanciarRei('e', 8, Cor.Preta, partida, reiPreto);
         Util.instanciarBispo('f', 8, Cor.Preta, partida, bispoPreto);
         Util.instanciarCavalo('g', 8, Cor.Preta, partida, cavaloPreto);
@@ -148,7 +148,7 @@ class GameController : MonoBehaviour {
     void informarAviso(string msg) {
         txtMsg.color = Color.red;
         txtMsg.text = msg;
-        Invoke("InformarAguardando", 1f);
+        Invoke("informarAguardando", 1f);
     }
 
     void informarAguardando() {
@@ -160,11 +160,11 @@ class GameController : MonoBehaviour {
         GameObject obj = peca.obj;
         if (peca.cor == Cor.Branca) {
             obj.transform.position = posDescarteBrancas;
-            posDescarteBrancas.z = posDescarteBrancas.z + 0.2f;
+            posDescarteBrancas.z = posDescarteBrancas.z + 25f;
         }
         else {
             obj.transform.position = posDescartePretas;
-            posDescartePretas.z = posDescartePretas.z - 0.2f;
+            posDescartePretas.z = posDescartePretas.z - 25f;
         }
     }
 

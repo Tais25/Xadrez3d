@@ -15,7 +15,7 @@ public class Movimentacao : MonoBehaviour {
         colidindo = false;
         casa = null;
 
-        chaoMask = LayerMask.GetMask("Chaos");
+        chaoMask = LayerMask.GetMask("Chao");
     }
 
     void OnTriggerEnter(Collider other) {
@@ -44,7 +44,7 @@ public class Movimentacao : MonoBehaviour {
         if (gameController.estado == Estado.Arrastando && gameController.pecaEscolhida == transform.gameObject) {
             Ray raio = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(raio, out hit, 300f, chaoMask)) {
+            if (Physics.Raycast(raio, out hit, 4000f, chaoMask)) {
                 transform.position = hit.point;
             }
         }
