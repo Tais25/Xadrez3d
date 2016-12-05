@@ -73,6 +73,18 @@ class GameController : MonoBehaviour {
                         peca.transform.position = Util.posicaoNaCena(coluna, linha);
 
                         pecaEscolhida = null;
+
+                        if (partida.terminada) {
+                            estado = Estado.GameOver;
+                            txtMsg.text = "Vencedor: " + partida.jogadorAtual;
+                            txtXeque.text = "XEQUEMATE";
+                        }
+                        else {
+                            estado = Estado.AguardandoJogada;
+                            informarAguardando();
+                            txtXeque.text = (partida.xeque) ? "XEQUE" : "";
+                        }
+
                         estado = Estado.AguardandoJogada;
                         informarAguardando();
                     }
